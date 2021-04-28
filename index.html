@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>Prijava i registracija</title>
+<link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+</head>
+
+<body>
+    <div class = "hero">
+        <div class = "form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type ="button" class="toggle-btn" onclick="login()">Prijava</button>
+                <button type ="button" class="toggle-btn" onclick="register()">Registracija</button>
+            </div>
+            <div class="social-icons">
+                    <img src ="fb.png">
+                    <img src ="tw.png">
+                    <img src ="gp.png">
+                </div>
+                <form action="validacija.php" method="post" id ="login" class="input-group">
+                    <input type="text" class="input-field" name ="user" placeholder="Korisničko ime">
+                    <input type="password" class="input-field" name="password" placeholder="Vaša lozinka" required>
+                    <input type="checkbox" class="check-box"><span>Zapamti moju prijavu</span>
+                    <button type="submit" class="submit-btn">Prijava</button>
+                </form>
+
+                <form  action="registracija.php" method="post" id="register" class="input-group">
+                        <input type="text" class="input-field" name ="user" placeholder="Korisničko ime">
+                        <input type="email" class="input-field" name ="email" placeholder="Email" required>
+                        <input type="password" class="input-field" name ="password" placeholder="Vaša lozinka" required>
+                        <input type="checkbox" class="check-box"><span>Slažem se sa uslovima korištenja</span>
+                        <button type="submit" class="submit-btn">Registracija</button>
+                </form>
+                <a class="float-right" href="glavna.html">Samo razgledam</a>
+        </div>
+        
+    </div>
+    
+    <script>
+        var x = document.getElementById("login");
+        var y = document.getElementById("register");
+        var z = document.getElementById("btn");
+
+        function register(){
+            x.style.left = "-400px";
+            y.style.left = "50px";
+            z.style.left = "110px";
+        }
+
+        function login(){
+            x.style.left = "50px";
+            y.style.left = "450px";
+            z.style.left = "0px";
+        }
+
+
+
+    </script>
+</body>
+</html>

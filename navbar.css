@@ -1,0 +1,28 @@
+.navbar{
+	background: #184d69;
+	padding: 1rem 8rem;
+	font-family: Palatino Linotype;
+}
+
+.navbar .navbar-brand{
+	font-size: 1.4rem;
+	font-weight: 700;
+}
+
+#navbarSupportedContent > ul > li:nth-child(n) > a{
+	color: #fff;
+	font-size: 1.1rem;
+	padding: 0 0.8rem;
+}
+
+#navbarSupportedContent > ul > li:nth-child(n) > a:hover{
+	color: #00BF85;
+}
+
+#navbarSupportedContent > .btn:hover{
+	background: #00BF85;
+}
+
+.fa-shopping-cart{
+	color: white;
+}
