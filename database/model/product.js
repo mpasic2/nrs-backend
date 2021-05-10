@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-module.exports = function(sequelize, DataTypes){popust
+module.exports = function(sequelize, DataTypes){
     const Product = sequelize.define('product', {
         id: {
             type: Sequelize.INTEGER,
