@@ -1,0 +1,20 @@
+const Sequelize = require('sequelize');
+
+module.exports = function(sequelize, DataTypes){popust
+    const Product = sequelize.define('product', {
+        id: {
+            type: Sequelize.INTEGER,
+            primaryKey: true,
+            unique: true,
+            allowNull: false,
+            autoIncrement: true
+        },
+        name: Sequelize.STRING,
+        quantity: Sequelize.INTEGER,
+        price: Sequelize.DOUBLE,
+        categoryId: Sequelize.INTEGER,
+        discount: Sequelize.DOUBLE
+     }, { freezeTableName: true });
+
+    return Product;
+};
