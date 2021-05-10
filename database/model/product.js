@@ -13,7 +13,8 @@ module.exports = function(sequelize, DataTypes){
         quantity: Sequelize.INTEGER,
         price: Sequelize.DOUBLE,
         categoryId: Sequelize.INTEGER,
-        discount: Sequelize.DOUBLE
+        discount: Sequelize.DOUBLE,
+      	barCode: Sequelize.STRING
      }, { freezeTableName: true });
 
     return Product;
