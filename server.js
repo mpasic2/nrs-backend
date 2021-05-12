@@ -12,11 +12,11 @@ db.sequelize.sync().then(function(){
 });
 
 app.post('/',function(req,res){
-    res.end("RADI");
+    res.end("Dobrodošli na backend TIMA 4");
 });
 
 app.get('/',function(req,res){
-    res.end("RADI");
+    res.end("Dobrodošli na backend TIMA 4");
 });
 
 app.listen(1000);
