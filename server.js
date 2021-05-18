@@ -16,6 +16,10 @@ app.post('/',function(req,res){
     res.end("Dobrodošli na backend TIMA 4");
 });
 
+app.post('/api',function(req,res){
+    res.end("Dobrodošli na backend TIMA 4");
+});
+
 app.get('/',function(req,res){
     res.end("Dobrodošli na backend TIMA 4");
 });
