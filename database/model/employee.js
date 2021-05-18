@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes){
         managerId: Sequelize.INTEGER,
         hireDate: Sequelize.DATE,
         jobTitle: Sequelize.STRING,
-        rule: Sequelize.INTEGER
+        role: Sequelize.INTEGER
         
     }, { freezeTableName: true });
 

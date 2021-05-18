@@ -3,6 +3,7 @@ const fs = require('fs');
 const url = require('url'); 
 const express = require('express');
 const app = express();
+const setup = require("./dbInit.js");
 
 
 const db = require('./database/db.js');
@@ -12,11 +13,14 @@ db.sequelize.sync().then(function(){
 });
 
 app.post('/',function(req,res){
-    res.end("RADI");
+    res.end("Dobrodošli na backend TIMA 4");
 });
 
 app.get('/',function(req,res){
-    res.end("RADI");
+    res.end("Dobrodošli na backend TIMA 4");
 });
 
-app.listen(8080);
+app.listen(1000, () => {
+    setup.sinhronizacija();
+    console.log("Baza kreirana i popunjena");
+});
