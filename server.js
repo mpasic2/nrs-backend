@@ -25,6 +25,6 @@ app.get('/',function(req,res){
 });
 
 app.listen(1000, () => {
-    setup.sinhronizacija();
+    setup.synchronization();
     console.log("Baza kreirana i popunjena");
 });
