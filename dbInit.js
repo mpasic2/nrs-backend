@@ -69,7 +69,6 @@ function initialization() {
     return new Promise((resolve, reject) => {
         const promises = Promise.all(userPromise).then(() => {
             db.user.findAll().then(elements => {
-                const user = elements.find((el) => el.username === 'admin')
                 
                 promises.then(() => {
                     var employeePromise = [
