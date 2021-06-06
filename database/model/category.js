@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
 module.exports = function(sequelize, DataTypes){
-    const Categories = sequelize.define('categories', {
+    const Category = sequelize.define('category', {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
@@ -15,5 +15,5 @@ module.exports = function(sequelize, DataTypes){
         }
     }, { freezeTableName: true });
 
-    return Categories;
+    return Category;
 };
