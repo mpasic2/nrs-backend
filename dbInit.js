@@ -69,6 +69,7 @@ function initialization() {
     return new Promise((resolve, reject) => {
         const promises = Promise.all(userPromise).then(() => {
             db.user.findAll().then(elements => {
+                const user = elements.find((el) => el.username === 'admin')
                 
                 promises.then(() => {
                     var employeePromise = [
@@ -98,7 +99,7 @@ function initialization() {
                         })
                     ];
                     return Promise.all(employeePromise)
-                })
+                }).catch(reason => reject(reason))
                 .then(() => {
                         var categoryPromise = [
                             db.category.create({
@@ -115,6 +116,8 @@ function initialization() {
                         ];
                         return Promise.all(categoryPromise)
                     })
+                    .catch(reason => reject(reason))
+                 
                     
                     
                     .then(()=> {
@@ -170,7 +173,7 @@ function initialization() {
                     .catch(reason => reject(reason));
             })
         });
-    });
+    }).catch(reason => reject(reason));
 }
 
 exports.synchronization = synchronization;
