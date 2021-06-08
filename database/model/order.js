@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes){
             allowNull: false,
             autoIncrement: true
         },
-        employerId: Sequelize.INTEGER,
+        employeeId: Sequelize.INTEGER,
         paymentType: Sequelize.INTEGER,
         date: Sequelize.DATE,
         status: Sequelize.STRING

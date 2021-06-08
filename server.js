@@ -3,7 +3,6 @@ const fs = require('fs');
 const url = require('url');
 const express = require('express');
 const app = express();
-const setup = require("./dbInit.js");
 const bodyParser = require('body-parser');
 const db = require('./database/db.js');
 const { query } = require('express');
@@ -12,7 +11,7 @@ const { stringify } = require('querystring');
 app.use(express.json());
 
 db.sequelize.sync().then(function () {
-    console.log("Tables created");
+    console.log("Tables created - uredu je!");
 });
 
 
@@ -145,7 +144,6 @@ app.get('/GetEmployeesByRole/:role',function(req,res){
 
 //DELETE zahtjevi za brisanje cijelih tabela
 
-/*
 app.delete('/DeleteProducts', function (req, res) {
     db.product.destroy({where:{}}).then(function (product) {
         res.end("Uspješno obrisani svi artikli!");
@@ -186,10 +184,10 @@ app.delete('/DeleteOrderItems', function (req, res) {
     db.orderItem.destroy({where:{}}).then(function (orderitem) {
         res.end("Uspješno obrisani svi artikli narudžbi!");
     })
-});*/
+});
 
 //DELETE zahtjevi za brisanje iz tabele po ID-u
-/*
+
 app.delete('/DeleteProducts/:id', function (req, res) {
     var idProduct = req.params.id;
     db.product.destroy({ where: { id: idProduct } }).then(function (product) {
@@ -231,12 +229,12 @@ app.delete('/DeleteCategory/:id', function (req, res) {
         res.end("Uspješno obrisana kategorija!");
     })
 });
-*/
+
 
 //DELETE zahtjevi za brisanje iz tabele po drugim parametrima
 
 //Brisanje korisnika po username-u
-/*
+
 app.get('/DeleteUsers',function(req,res){    
     
     const queryObject = url.query;
@@ -244,10 +242,10 @@ app.get('/DeleteUsers',function(req,res){
     db.user.destroy({where:{username:userName}}).then(function(user){        
         res.end("Uspješno obrisan korisnik!");
     });
-});*/
+});
 
 //Brisanje artikla po bar kodu
-/*
+
 app.get('/DeleteProducts',function(req,res){    
     
     const queryObject = url.query;
@@ -255,7 +253,7 @@ app.get('/DeleteProducts',function(req,res){
     db.product.destroy({where:{barCode:barcode}}).then(function(rez){        
         res.end("Uspješno obrisan artikal!");
     });
-});*/
+});
 
 //POST zahtjevi za dodavanje u tabele
 
@@ -419,7 +417,7 @@ app.post('/AddOrder', function (req, res) {
         var status = zahtjev.get('status');
         
         res.writeHead(200);
-        db.order.create({employerId: kasir, paymentType: placanje, date: datum, status: status}).then(function (orderitem) {
+        db.order.create({employeeId: kasir, paymentType: placanje, date: datum, status: status}).then(function (orderitem) {
             res.end("Uspješno kreirana narudzba");
         })
     });  
@@ -797,8 +795,7 @@ app.get('/', function (req, res) {
 
 
 var server = app.listen(1000, () => {
-    setup.synchronization();
-    console.log("Baza kreirana i popunjena");
+    console.log("Baza kreirana i popunjena - kad ovo ispise uredu je!");
 });
 
 module.exports = server
