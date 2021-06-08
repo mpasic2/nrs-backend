@@ -35,7 +35,7 @@ function initialization() {
             {
                 firstName: 'Mustafa',
                 lastName: 'Pasic',
-                username: 'mpasic1',
+                username: 'mpasic2',
                 password: '12345',
                 email: 'mpasic@gmail.com',
                 phone: '062062060',
@@ -96,6 +96,14 @@ function initialization() {
                             hireDate: '2010-01-01',
                             jobTitle: 'skladistar',
                             role: 3
+                        }),
+                        db.employee.create({
+                            employeeId: 4,
+                            userId: 4,
+                            managerId: null,
+                            hireDate: '2010-01-01',
+                            jobTitle: 'menadzer',
+                            role: 2
                         })
                     ];
                     return Promise.all(employeePromise)
@@ -116,13 +124,53 @@ function initialization() {
                         ];
                         return Promise.all(categoryPromise)
                     })
+
+                    .then(() => {
+                        var orderPromise = [
+                            db.order.create({
+                                employerId: 1,
+                                paymentType: 2,
+                                date: '2021-06-08',
+                                status: 'Zavrseno'
+
+                            }),
+                            db.order.create({
+                                employerId: 1,
+                                paymentType: 1,
+                                date: '2021-06-07',
+                                status: 'Zavrseno'
+                            }) 
+
+                        ];
+                        return Promise.all(orderPromise)
+                    })
+
+
+                    .then(() => {
+                        var billPromise = [
+                            db.bill.create({
+                                orderId: 1,
+                                total: 20,
+                                fiscalNumber: 1233213
+
+                            }),
+                            db.bill.create({
+                                orderId: 2,
+                                total: 35,
+                                fiscalNumber: 3214542
+                                
+                            }) 
+
+                        ];
+                        return Promise.all(billPromise)
+                    })
                     
                     
                     .then(()=> {
                         db.category.findAll().then(() => {
-                                var productPromise = [
+                                var productPromise = [ 
                                     db.product.create({
-                                        name: 'Milka velika',
+                                        name: "Milka velika",
                                         quantity: 100,
                                         price: 5,
                                         categoryId: 1,
@@ -130,7 +178,7 @@ function initialization() {
                                         barCode: '778894807042'
                                     }),
                                     db.product.create({
-                                        name: 'Sarajevski kiseljak',
+                                        name: "Sarajevski kiseljak",
                                         quantity: 50,
                                         price: 1,
                                         categoryId: 2,
