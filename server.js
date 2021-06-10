@@ -525,25 +525,29 @@ app.get('/GetProducts', function (req, res) {
     db.product.findAll().then(function (rez) {
         res.end(JSON.stringify(rez));
     });
+
+
 });
 
 app.get('/GetProducts/:id', function (req, res) {
 
     var idProduct = req.params.id;
-    db.product.findOne({ where: { id: idProduct } }).then(function (product) {
-        res.end(JSON.stringify(product));
+    db.product.findOne({ where: { id: idProduct } }).then(function (rez) {
+        res.end(JSON.stringify(rez));
     })
 });
-
+/*
 //Dobavljanje proizvoda po kategorji
 app.get('/GetProductsByCategory',function(req,res){        
-    const queryObject = url.query;
-    var kategorija = queryObject['category'].toString();   
+    const queryObject = new URLSearchParams(window.location.search)
+    var kategorija = queryObject.get('category');   
+    console.log(kategorija);
+
 
     db.product.findAll({where:{category:kategorija}}).then(function (rez) {
         res.end(JSON.stringify(rez));
     });    
-});
+});*/
 
 app.get('/GetProductsJSON', function (req, res) {
     db.product.findAll().then(function (rez) {
@@ -558,6 +562,7 @@ app.get('/GetProductsJSON/:id', function (req, res) {
     })
 });
 
+/*
 //Dobavljanje proizvoda po kategorji
 app.get('/GetProductsByCategoryJSON',function(req,res){        
     const queryObject = url.query;
@@ -565,7 +570,7 @@ app.get('/GetProductsByCategoryJSON',function(req,res){
     db.product.findAll({where:{categoryId:kategorija}}).then(function (rez) {
         res.json(rez);
     });    
-});
+});*/
 
 app.post('/AddProduct', function (req, res) {    
     var tijeloZahtjeva = '';
@@ -689,13 +694,15 @@ app.get('/GetUsers/:id', function (req, res) {
     })
 });
 
+/*
 app.get('/GetUserByUsername',function(req,res){        
     const queryObject = url.query;
+    console.log(queryObject.toString());
     var userName = queryObject['username'].toString();    
     db.user.findOne({where:{username:userName}}).then(function(rez){        
         res.end(JSON.stringify(rez));
     });     
-});
+});*/
 
 app.get('/GetUsersJSON', function (req, res) {
     db.user.findAll().then(function (rez) {
@@ -710,13 +717,14 @@ app.get('/GetUsersJSON/:id', function (req, res) {
     })
 });
 
+/*
 app.get('/GetUserByUsernameJSON',function(req,res){        
     const queryObject = url.query;
     var userName = queryObject['username'].toString();    
     db.user.findOne({where:{username:userName}}).then(function(rez){        
         res.json(rez);
     });     
-});
+});*/
 
 app.post('/AddUser', function (req, res) {
     
