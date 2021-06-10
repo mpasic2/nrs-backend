@@ -40,4 +40,5 @@ db.user = require(__dirname + '/model/user.js')(sequelize,Sequelize.DataTypes);
   db.user.hasOne(db.employee, {as: 'employeeId', foreignKey:'employeeId', onDelete: 'cascade'});
 
 
+
 module.exports=db;

@@ -7,7 +7,9 @@ const bodyParser = require('body-parser');
 const db = require('./database/db.js');
 const { query } = require('express');
 const { stringify } = require('querystring');
-//app.use(cors());
+
+const cors = require('cors');
+app.use(cors());
 //app.use(bodyParser.json());????
 //app.use(bodyParser.urlencoded({ extended: true }));?????
 
@@ -15,7 +17,7 @@ const { stringify } = require('querystring');
 app.use(express.json());
 
 db.sequelize.sync().then(function () {
-    console.log("Tables created");
+    console.log("Tables created - uredu je!");
 });
 
 //Validacija zahtjeva za dodavanje proizvoda
@@ -424,7 +426,7 @@ app.post('/AddOrder', function (req, res) {
         var status = zahtjev.get('status');
         
         res.writeHead(200);
-        db.order.create({employerId: kasir, paymentType: placanje, date: datum, status: status}).then(function (orderitem) {
+        db.order.create({employeeId: kasir, paymentType: placanje, date: datum, status: status}).then(function (orderitem) {
             res.end("Uspješno kreirana narudzba");
         })
     });  
