@@ -586,6 +586,7 @@ app.post('/AddProduct', function (req, res) {
         var kategorija = parseInt(zahtjev.get('categoryId'));
         var popust = parseFloat(zahtjev.get('discount'));
         var barKod = zahtjev.get('barCode');
+        var imgUrl = zahtjev.get('imgUrl');
         
         if (validirajProizvod(ime, kolicina, cijena, kategorija, popust, barKod) == false)
         {
@@ -593,7 +594,7 @@ app.post('/AddProduct', function (req, res) {
             return;
         }
             res.writeHead(200);
-            db.product.create({name: ime, quantity: kolicina, price: cijena, categoryId: kategorija, discount: popust, barCode: barKod}).then(function (product) {
+            db.product.create({name: ime, quantity: kolicina, price: cijena, categoryId: kategorija, discount: popust, barCode: barKod, imgUrl: imgUrl}).then(function (product) {
                 res.end("Uspješno dodan artikal!");
             });               
          
@@ -619,6 +620,7 @@ app.put('/UpdateProduct/:id', function (req, res) {
         var kategorija = parseInt(zahtjev.get('categoryId'));
         var popust = parseFloat(zahtjev.get('discount'));
         var barKod = zahtjev.get('barCode');
+        var imgUrl = zahtjev.get('imgUrl');
         
         res.writeHead(200);
 
@@ -651,7 +653,11 @@ app.put('/UpdateProduct/:id', function (req, res) {
         {            
             db.product.update({barCode: barKod}, {where:{id:idProduct}});
         }
-
+        
+        if (imgUrl != null)
+        {            
+            db.product.update({imgUrl: imgUrl}, {where:{id:idProduct}});
+        }
         res.end('Uspjesno azuriran proizvod!');
         return;
     });    

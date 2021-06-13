@@ -14,7 +14,8 @@ module.exports = function(sequelize, DataTypes){
         price: Sequelize.DOUBLE,
         categoryId: Sequelize.INTEGER,
         discount: Sequelize.DOUBLE,
-      	barCode: Sequelize.STRING
+      	barCode: Sequelize.STRING,
+        imgUrl: Sequelize.STRING
      }, { freezeTableName: true });
 
     return Product;
